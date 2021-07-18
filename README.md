@@ -15,3 +15,5 @@ O comando abaixo executará um servidor local para que possamos consumir o JSON 
 Por fim utilize o comando abaixo para inicializar a aplicação:
 
 ### `yarn start`
+
+Na hora de inicializar escolha uma porta diferente pois por padrão o json-server inicializa mesma porta que o yarn start, então só selecione a Opção [Yes] que ele abrirá em uma nova porta.
