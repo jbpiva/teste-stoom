@@ -1,37 +1,37 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import '../Massa/index.scss';
+import '../Recheio/index.scss';
 import pizzaImg from '../../assets/images/pizza.jpg';
 import api from '../../services/api';
 import { BoxPizza } from './styles';
 
-interface PropsMassas {
+interface PropsRecheios {
     id: string,
-    massa: string,
+    sabor: string,
     description: string,
 }
 
-function Massa() {
+function Recheio() {
     const history = useHistory();
-    const [massas, setMassas] = useState<PropsMassas[]>([]);
-    const [selectedMassa, setSelectedMassa] = useState("");
+    const [recheios, setRecheios] = useState<PropsRecheios[]>([]);
+    const [selectedRecheio, setSelectedRecheio] = useState("");
 
     useEffect(() => {
-        api.get('/massas').then((response) => {
-            setMassas(response.data);
+        api.get('/recheios').then((response) => {
+            setRecheios(response.data);
         })
     }, []);
 
-    function handlePizzaType() {
-        history.push('/recheio/new');
+    function handlePizzaSize() {
+        history.push('/tamanho/new');
     }
 
-    function handleSelectedMassa(id: string) {
-        setSelectedMassa(id);
+    function handleSelectedRecheio(id: string) {
+        setSelectedRecheio(id);
     }
 
     return (
-        <div id="massa-page">
+        <div id="recheio-page">
             <header>
                 <div className="container">
                     <h1>Barra de Progresso</h1>
@@ -42,7 +42,7 @@ function Massa() {
                         </div>
                         <div className="step">
                             <p className="step-text">Passo 2</p>
-                            <div className="bullet">2</div>
+                            <div className="bullet completed">2</div>
                         </div>
                         <div className="step">
                             <p className="step-text">Passo 3</p>
@@ -54,20 +54,20 @@ function Massa() {
                 </div>
             </header>
             <main>
-                {massas.map(({ massa, description, id }) => (
+                {recheios.map(({ sabor, description, id }) => (
                     <form>
-                        <BoxPizza key={id} className="main-content" isActive={id !== selectedMassa && selectedMassa !== ""}>
+                        <BoxPizza key={id} className="main-content" isActive={id !== selectedRecheio && selectedRecheio !== ""}>
                             <div className="radio-button">
-                                <button type="button" className="select-button" onClick={() => handleSelectedMassa(id)}>Selecionar</button>
+                                <button type="button" className="select-button" onClick={() => handleSelectedRecheio(id)}>Selecionar</button>
                             </div>
-                            <h2>Massa: {massa}</h2>
+                            <h2>Pizza de {sabor}</h2>
                             <div>
                                 <div>
                                     <img src={pizzaImg} alt="Pizza Napolitana" />
                                 </div>
                                 <div>
-                                    <h3>Massa:</h3>
-                                    <p>{massa}</p>
+                                    <h3>Pizza de:</h3>
+                                    <p>{sabor}</p>
                                     <h3>Descrição:</h3>
                                     <p>{description}</p>
                                 </div>
@@ -79,11 +79,11 @@ function Massa() {
             </main>
             <footer>
                 <div>
-                    <button type="button" onClick={handlePizzaType}>Próximo Step</button>
+                    <button type="button" onClick={handlePizzaSize}>Próximo Step</button>
                 </div>
             </footer>
         </div>
     );
 }
 
-export default Massa;
+export default Recheio;

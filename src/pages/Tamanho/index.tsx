@@ -1,37 +1,38 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import '../Massa/index.scss';
+import '../Tamanho/index.scss';
 import pizzaImg from '../../assets/images/pizza.jpg';
 import api from '../../services/api';
 import { BoxPizza } from './styles';
 
-interface PropsMassas {
+interface PropsTamanho {
     id: string,
-    massa: string,
+    tamanho: string,
     description: string,
 }
 
-function Massa() {
+function Tamanho() {
     const history = useHistory();
-    const [massas, setMassas] = useState<PropsMassas[]>([]);
-    const [selectedMassa, setSelectedMassa] = useState("");
+    const [tamanhos, setTamanhos] = useState<PropsTamanho[]>([]);
+    const [selectedTamanho, setSelectedTamanho] = useState("");
 
     useEffect(() => {
-        api.get('/massas').then((response) => {
-            setMassas(response.data);
+        api.get('/tamanhos').then((response) => {
+            setTamanhos(response.data);
         })
     }, []);
 
-    function handlePizzaType() {
-        history.push('/recheio/new');
+    function handleFinishOrder() {
+        alert("Pedido Finalizado");
+        history.push('/');
     }
 
-    function handleSelectedMassa(id: string) {
-        setSelectedMassa(id);
+    function handleSelectedTamanho(id: string) {
+        setSelectedTamanho(id);
     }
 
     return (
-        <div id="massa-page">
+        <div id="tamanho-page">
             <header>
                 <div className="container">
                     <h1>Barra de Progresso</h1>
@@ -42,11 +43,11 @@ function Massa() {
                         </div>
                         <div className="step">
                             <p className="step-text">Passo 2</p>
-                            <div className="bullet">2</div>
+                            <div className="bullet completed">2</div>
                         </div>
                         <div className="step">
                             <p className="step-text">Passo 3</p>
-                            <div className="bullet">3</div>
+                            <div className="bullet completed">3</div>
                         </div>
 
                     </div>
@@ -54,20 +55,20 @@ function Massa() {
                 </div>
             </header>
             <main>
-                {massas.map(({ massa, description, id }) => (
+                {tamanhos.map(({ tamanho, description, id }) => (
                     <form>
-                        <BoxPizza key={id} className="main-content" isActive={id !== selectedMassa && selectedMassa !== ""}>
+                        <BoxPizza key={id} className="main-content" isActive={id !== selectedTamanho && selectedTamanho !== ""}>
                             <div className="radio-button">
-                                <button type="button" className="select-button" onClick={() => handleSelectedMassa(id)}>Selecionar</button>
+                                <button type="button" className="select-button" onClick={() => handleSelectedTamanho(id)}>Selecionar</button>
                             </div>
-                            <h2>Massa: {massa}</h2>
+                            <h2>Massa: {tamanho}</h2>
                             <div>
                                 <div>
                                     <img src={pizzaImg} alt="Pizza Napolitana" />
                                 </div>
                                 <div>
                                     <h3>Massa:</h3>
-                                    <p>{massa}</p>
+                                    <p>{tamanho}</p>
                                     <h3>Descrição:</h3>
                                     <p>{description}</p>
                                 </div>
@@ -79,11 +80,11 @@ function Massa() {
             </main>
             <footer>
                 <div>
-                    <button type="button" onClick={handlePizzaType}>Próximo Step</button>
+                    <button type="button" onClick={handleFinishOrder}>Finalizar Pedido</button>
                 </div>
             </footer>
         </div>
     );
 }
 
-export default Massa;
+export default Tamanho;

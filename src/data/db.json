@@ -1,22 +1,64 @@
 {
-    "pizzaria": [
+    "pizzas": [
         {
-            "id": 1,
-            "model": "BMW X7",
-            "color": "Preto",
-            "price": 455.95
+            "id": "2624156121ab",
+            "sabor": "Napolitana",
+            "massa": "Napolitana",
+            "ingredientes": "mussarela, peito de peru, palmito, parmesão, orégano.",
+            "valor": "37,00",
+            "do_dia": true,
+            "pontos": 50
+        }
+    ],
+    "massas": [
+        {
+            "id": "262415612100ab",
+            "massa": "Nova-Iorquina",
+            "description": "Lorem ipsum dolor sit amet"
         },
         {
-            "id": 2,
-            "model": "Mercedes benz c180",
-            "color": "Azul",
-            "price": 194.9
+            "id": "26241587566121ab",
+            "massa": "Siciliana",
+            "description": "Lorem ipsum dolor sit amet"
         },
         {
-            "id": 3,
-            "model": "Land Rover Range Rover Velar",
-            "color": "Branco",
-            "price": 377.38
+            "id": "26241243456121ab",
+            "massa": "Napolitana",
+            "description": "Lorem ipsum dolor sit amet"
+        }
+    ],
+    "recheios": [
+        {
+            "id": "2624151116121ab",
+            "sabor": "Calabresa",
+            "description": "Mussarela, calabresa e cebola, oregano."
+        },
+        {
+            "id": "2624156143522221ab",
+            "sabor": "Pepperoni",
+            "description": "Mussarela, oregano e pepperoni."
+        },
+        {
+            "id": "26241568785885121ab",
+            "sabor": "3 Queijos",
+            "description": "Mussarela, requeijão, oregano e parmesão ralado."
+        }
+    ],
+    "tamanhos": [
+        {
+            "id": "2623424211321ab",
+            "tamanho": "Grande",
+            "description": "Lorem ipsum dolor sit amet"
+        },
+        {
+            "id": "2625465461100121ab",
+            "tamanho": "Média",
+            "description": "Lorem ipsum dolor sit amet"
+        },
+        {
+            "id": "26242133125006121ab",
+            "tamanho": "Pequena",
+            "description": "Lorem ipsum dolor sit amet"
         }
     ]
 }
